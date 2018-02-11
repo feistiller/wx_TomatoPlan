@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/user/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#59ef79",
+    "position": "bottom",
+    "list": [
+      {
+        "selectedIconPath": "public/icon/clock_active.png",
+        "iconPath": "public/icon/clock.png",
+        "pagePath": "pages/index/index",
+        "text": "番茄时钟"
+      },
+      {
+        "selectedIconPath": "public/icon/user_active.png",
+        "pagePath": "pages/user/index",
+        "text": "个人中心",
+        "iconPath": "public/icon/user.png"
+      }
+    ]
+  },
+  "debug": "true"
+}

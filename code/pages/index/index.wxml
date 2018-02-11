@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<view class="container">
+<view>
+<text>输入任务：</text>
+<input bindinput='setName'></input>
+<text>设定时长：</text>
+<input bindinput='setTime' placeholder='分钟'></input>
+<button  bindtap='timeStart'>点击开始</button>
+</view>
+  <view>
+    <text>{{surplusTimeMin}}:{{surplusTimeSec}}</text>
+  </view>
+</view>
