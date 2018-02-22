@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+let utils = require('../../utils/util.js')
 Page({
   data: {
     surplusTimeMin: 0,
@@ -24,6 +24,12 @@ Page({
   },
   // 计时开始
   timeStart: function () {
+    if (this.data.name == '' || !Number.isInteger(Number(this.data.needTime))){
+      wx.showLoading({
+        title: '输入格式错误',
+        duration:2000
+      })
+    }else{
     let tempData={
       name:this.data.name,
       needTime: this.data.needTime,
@@ -40,6 +46,7 @@ Page({
       data: JSON.stringify(allData),
     })
     this.timing(this.data.needTime)
+    }
   },
   // 时间加减
   timing: function (time) {

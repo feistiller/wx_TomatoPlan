@@ -1,5 +1,5 @@
 // pages/user/index.js
-let timeUtil = require('../../utils/util.js')
+let util = require('../../utils/util.js')
 Page({
 
   /**
@@ -21,7 +21,7 @@ Page({
       let newTempList=[]
       tempList.map((currentValue,index,arr)=>{
         let tempData={
-          startTime: timeUtil.formatTime(currentValue.startTime),
+          startTime: util.formatTime(currentValue.startTime),
           name: currentValue.name,
           // 这个是任务完成的状态
           status: that.setListStatus(currentValue.startTime, currentValue.needTime)
