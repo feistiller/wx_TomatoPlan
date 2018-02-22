@@ -1,2 +1,9 @@
 <!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<view>
+  <text>计划</text>
+  <view wx:for="{{userList}}">
+  {{item.name}}：{{item.needTime}}
+</view>
+<view><button bindtap='cleanList'>清空所有的记录</button></view>
+</view>
+

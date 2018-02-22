@@ -60,7 +60,6 @@ Page({
       } else {
         sec = sec - 1
       }
-
       self.setData({
         surplusTimeSec: sec,
         surplusTimeMin: min
