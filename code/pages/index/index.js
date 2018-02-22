@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 let utils = require('../../utils/util.js')
+let music = require('../../utils/music.js')
 Page({
   data: {
     surplusTimeMin: 0,
@@ -57,9 +58,17 @@ Page({
       console.log("倒计时" + min + ':' + sec)
       if (min == 0&&sec==0) {
         // 倒计时到
+        wx.vibrateLong()
+        music.innerAudioContext.play()
         wx.showModal({
           title: '时间到',
-          content: '',
+          content: '您任务的时间已经到了哦~请开始下一个任务',
+          showCancel:false,
+          success: (res)=>{
+            if (res.confirm) {
+              music.innerAudioContext.stop()
+            }
+          }
         })
         clearInterval(timer)
       } else if (sec == 0) {

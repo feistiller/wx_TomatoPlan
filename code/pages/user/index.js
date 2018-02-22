@@ -48,8 +48,6 @@ Page({
     startTime=Number(new Date(startTime))/1000
     needTime = needTime*60
     let nowTime =Number(new Date())/1000
-    console.log(nowTime)
-    console.log(startTime)
     if (startTime + needTime > nowTime){
       return "未完成"
     }else{
