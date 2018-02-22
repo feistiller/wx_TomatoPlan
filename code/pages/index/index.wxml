@@ -1,13 +1,28 @@
 <!--index.wxml-->
 <view class="container">
-<view>
-<text>输入任务：</text>
-<input bindinput='setName'></input>
-<text>设定时长：</text>
-<input bindinput='setTime' placeholder='分钟'></input>
-<button  bindtap='timeStart'>点击开始</button>
-</view>
   <view>
-    <text>{{surplusTimeMin}}:{{surplusTimeSec}}</text>
+    <view class='listWord xCenter grayWord'>倒计时</view>
+    <view>
+      <text class='clockShow xCenter'>{{surplusTimeMin}}:{{surplusTimeSec}}</text>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">输入任务：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input bindinput='setName' class="weui-input" placeholder="请输入任务名称" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">设定时长：</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input bindinput='setTime' class="weui-input" placeholder="请输入任务时长（分钟）" />
+      </view>
+    </view>
+    <view class='xCenter'>
+      <button type='primary' size='mini' bindtap='timeStart'>点击开始</button>
+    </view>
   </view>
 </view>

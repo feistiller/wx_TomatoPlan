@@ -1,1 +1,4 @@
 /**index.wxss**/
+.clockShow{
+  font-size: 35px
+}

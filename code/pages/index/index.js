@@ -5,8 +5,8 @@ let utils = require('../../utils/util.js')
 let music = require('../../utils/music.js')
 Page({
   data: {
-    surplusTimeMin: 0,
-    surplusTimeSec: 0,
+    surplusTimeMin: '00',
+    surplusTimeSec: '00',
     name: '',
     needTime: ''
   },
@@ -54,6 +54,8 @@ Page({
     let min = time
     let sec = 0
     let self = this
+    let showMin='00'
+    let showSec='00'
     let timer=setInterval( () =>{
       console.log("倒计时" + min + ':' + sec)
       if (min == 0&&sec==0) {
@@ -77,9 +79,20 @@ Page({
       } else {
         sec = sec - 1
       }
+      // 格式化下，更好看
+      if (min < 10) {
+        showMin = '0' + min
+      } else {
+        showMin = min
+      }
+      if (sec < 10) {
+        showSec = '0' + sec
+      } else {
+        showSec = sec
+      }
       self.setData({
-        surplusTimeSec: sec,
-        surplusTimeMin: min
+        surplusTimeSec: showSec,
+        surplusTimeMin: showMin
       })
     }, 1000)
   }

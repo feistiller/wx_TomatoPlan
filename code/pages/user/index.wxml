@@ -1,9 +1,18 @@
 <!--pages/user/index.wxml-->
-<view>
-  <text>计划</text>
-  <view wx:for="{{userList}}">
-  {{item.startTime}}——{{item.name}}：{{item.status}}
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells__title">任务列表</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell" wx:for="{{userList}}">
+        <view class="weui-cell__bd listWord">{{item.startTime}} | {{item.name}}</view>
+        <view class="weui-cell__ft listWord">{{item.status}}</view>
+      </view>
+    </view>
+    <view class='xCenter' style='padding-top:10px'>
+      <button type='warn' size='mini' bindtap='cleanList'>清空所有的记录</button>
+    </view>
+    <view style='padding:10px;'>
+      <text style='font-size:10px;color:#ababab'>此版本只是一个小白码农的开发版本，正在一步步的完善中，如果您在使用的时候发现了任何问题和建议，欢迎发送邮件至uneedzf@outlook.com，[]~(￣▽￣)~*</text>
+    </view>
+  </view>
 </view>
-<view><button bindtap='cleanList'>清空所有的记录</button></view>
-</view>
-
