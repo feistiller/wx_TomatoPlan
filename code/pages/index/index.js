@@ -26,7 +26,8 @@ Page({
   timeStart: function () {
     let tempData={
       name:this.data.name,
-      needTime: this.data.needTime
+      needTime: this.data.needTime,
+      startTime: new Date()
     }
     let allData=[]
     let oldData = wx.getStorageSync('plan')

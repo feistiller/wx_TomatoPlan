@@ -1,4 +1,5 @@
 // pages/user/index.js
+let timeUtil = require('../../utils/util.js')
 Page({
 
   /**
@@ -13,10 +14,22 @@ Page({
    */
   onShow: function () {
     // 拿到plan
+    let that =this
     let oldData = wx.getStorageSync('plan')
     if (oldData) {
+      let tempList=JSON.parse(oldData)
+      let newTempList=[]
+      tempList.map((currentValue,index,arr)=>{
+        let tempData={
+          startTime: timeUtil.formatTime(currentValue.startTime),
+          name: currentValue.name,
+          // 这个是任务完成的状态
+          status: that.setListStatus(currentValue.startTime, currentValue.needTime)
+        }
+        newTempList.push(tempData)
+      })
       this.setData({
-        userList: JSON.parse(oldData)
+        userList: newTempList
       })
     }
   },
@@ -26,6 +39,22 @@ Page({
     this.setData({
       userList: []
     })
+  },
+  /**
+   * 这个是设置于任务的状态
+   */
+  setListStatus(startTime,needTime){
+    // 以s为基础
+    startTime=Number(new Date(startTime))/1000
+    needTime = needTime*60
+    let nowTime =Number(new Date())/1000
+    console.log(nowTime)
+    console.log(startTime)
+    if (startTime + needTime > nowTime){
+      return "未完成"
+    }else{
+      return "已到期"
+    }
   },
 
   /**
