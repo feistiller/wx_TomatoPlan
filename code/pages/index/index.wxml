@@ -21,8 +21,8 @@
         <input bindinput='setTime' class="weui-input" placeholder="请输入任务时长（分钟）" />
       </view>
     </view>
-    <view class='xCenter'>
-      <button type='primary' size='mini' bindtap='timeStart'>点击开始</button>
+    <view class='xCenter' style='padding-top:100px'>
+      <view style='width:100px;height:100px;background-image: url("../../public/btn/start.png");background-size: cover;' bindtap='timeStart'></view>
     </view>
   </view>
 </view>

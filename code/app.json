@@ -6,12 +6,12 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#94f4a9",  
+    "navigationBarTitleText": "番茄计划",
+    "navigationBarTextStyle": "light"
   },
   "tabBar": {
-    "selectedColor": "#59ef79",
+    "selectedColor": "#94f4a9",
     "position": "bottom",
     "list": [
       {
