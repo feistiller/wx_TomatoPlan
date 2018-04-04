@@ -1,4 +1,5 @@
 // pages/user/index.js
+const app = getApp()
 let util = require('../../utils/util.js')
 Page({
 
@@ -6,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userList:[]
+    userList:[],
+    url: app.globalData.url
   },
 
   /**

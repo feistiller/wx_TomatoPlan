@@ -8,7 +8,8 @@ Page({
     surplusTimeMin: '00',
     surplusTimeSec: '00',
     name: '',
-    needTime: ''
+    needTime: '',
+    url: app.globalData.url
   },
   onLoad: function () {
   },

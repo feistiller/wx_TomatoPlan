@@ -22,7 +22,7 @@
       </view>
     </view>
     <view class='xCenter' style='padding-top:100px'>
-      <view style='width:100px;height:100px;background-image: url("../../public/btn/start.png");background-size: cover;' bindtap='timeStart'></view>
+      <view style='width:100px;height:100px;background-image: url("{{url}}public/img/btn/start.png");background-size: cover;' bindtap='timeStart'></view>
     </view>
   </view>
 </view>

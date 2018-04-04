@@ -30,6 +30,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    url:'http://localhost:899/',
+    // url:''
   }
 })
