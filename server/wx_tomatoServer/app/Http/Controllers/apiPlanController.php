@@ -41,12 +41,29 @@ class apiPlanController extends BaseController
      * 更新显示用户的任务状态
      */
     public function showPlans(Request $request){
-        
+        $openId = $request->input('openId');
+        $find_array=[
+            'openId'=>$openId,
+            'status'=>1
+        ];
+        $data=DB::table('events_status')->where($find_array)->find();
+        return $this->dataFormat(0,'',$data);
+
     }
     /**
      * 删除清空用户的任务(暂时全部删除)
      */
     public function delPlans(Request $request){
+        $openId = $request->input('openId');
+        $find_array=[
+            'openId'=>$openId,
+            'status'=>1
+        ];
+        $data=DB::table('events_status')->where($find_array)->update('status',2);
+        if($data){
 
+        }else{
+            return $this->dataFormat(1,'不知道什么错误')
+        }
     }
 }
