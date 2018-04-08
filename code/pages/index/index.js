@@ -26,28 +26,51 @@ Page({
   },
   // 计时开始
   timeStart: function () {
-    if (this.data.name == '' || !Number.isInteger(Number(this.data.needTime))){
+        if (this.data.name == '' || !Number.isInteger(Number(this.data.needTime))){
       wx.showLoading({
         title: '输入格式错误',
         duration:2000
       })
     }else{
-    let tempData={
-      name:this.data.name,
-      needTime: this.data.needTime,
-      startTime: new Date()
-    }
-    let allData=[]
-    let oldData = wx.getStorageSync('plan')
-    if (oldData){
-      allData = JSON.parse(oldData)
-    }
-    allData.push(tempData)
-    wx.setStorage({
-      key:"plan",
-      data: JSON.stringify(allData),
+      let that=this
+    // let tempData={
+    //   name:this.data.name,
+    //   needTime: this.data.needTime,
+    //   startTime: new Date()
+    // }
+    // let allData=[]
+    // let oldData = wx.getStorageSync('plan')
+    // if (oldData){
+    //   allData = JSON.parse(oldData)
+    // }
+    // allData.push(tempData)
+    // wx.setStorage({
+    //   key:"plan",
+    //   data: JSON.stringify(allData),
+    // })
+    // 取消本地备份改为上传保存至服务器.
+    app.getUserOpenId(function(openId){
+      wx.request({
+        url: app.globalData.url + 'api/savePlan',
+        data: {
+          name: that.data.name,
+          needTime: that.data.needTime,
+          startTime: new Date().getTime()/1000,
+          openId:openId
+        },
+        method: 'post',
+        success: res1 => {
+          if (res1.data.code === 0) {
+            that.timing(that.data.needTime)
+          }else{
+            wx.showLoading({
+              title: res1.data.message,
+              duration:1000
+            })
+          }
+        }
+      })
     })
-    this.timing(this.data.needTime)
     }
   },
   // 时间加减
