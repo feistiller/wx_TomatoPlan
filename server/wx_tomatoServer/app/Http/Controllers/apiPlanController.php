@@ -61,9 +61,9 @@ class apiPlanController extends BaseController
         ];
         $data=DB::table('events_status')->where($find_array)->update('status',2);
         if($data){
-
+            return $this->dataFormat(0,'',$data);
         }else{
-            return $this->dataFormat(1,'不知道什么错误')
+            return $this->dataFormat(1,'不知道什么错误');
         }
     }
 }
