@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userList:[],
+    userList: [],
     url: app.globalData.url
   },
 
@@ -15,59 +15,87 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // 拿到plan
+    let newTempList = []
     let that =this
-    let oldData = wx.getStorageSync('plan')
-    if (oldData) {
-      let tempList=JSON.parse(oldData)
-      let newTempList=[]
-      tempList.map((currentValue,index,arr)=>{
-        let tempData={
-          startTime: util.formatTime(currentValue.startTime),
-          name: currentValue.name,
-          // 这个是任务完成的状态
-          status: that.setListStatus(currentValue.startTime, currentValue.needTime)
+    // 拿到plan
+    app.getUserOpenId(function (openId) {
+      wx.request({
+        url: app.globalData.url + 'api/showPlans',
+        data: {
+          openId: openId
+        },
+        method: 'post',
+        success: res1 => {
+          if (res1.data.code === 0) {
+            res1.data.data.map(function (item) {
+              let temp_array = {
+                startTime: util.formatTime(item.startTime*1000),
+                name: item.eventTitle,
+                status: that.setListStatus(item.status)
+              }
+              newTempList.push(temp_array)
+            })
+            that.setData({
+              userList: newTempList
+            })
+            console.log(newTempList)
+          } else {
+            wx.showLoading({
+              title: res1.data.message,
+              duration: 1000
+            })
+          }
         }
-        newTempList.push(tempData)
       })
-      this.setData({
-        userList: newTempList
-      })
-    }
+    })
   },
   // 清空所有缓存
-  cleanList:function(){
-    wx.clearStorage()
-    this.setData({
-      userList: []
+  cleanList: function () {
+    let that=this
+    app.getUserOpenId(function (openId) {
+      wx.request({
+        url: app.globalData.url + 'api/delPlans',
+        data: {
+          openId: openId
+        },
+        method: 'post',
+        success: res1 => {
+          wx.showLoading({
+            title: res1.data.message,
+            duration: 1000,
+            complete:()=>{
+              that.setData({
+                userList: []
+              })
+            }
+          })
+          
+        }
+      })
+
     })
   },
   /**
    * 这个是设置于任务的状态
    */
-  setListStatus(startTime,needTime){
-    // 以s为基础
-    startTime=Number(new Date(startTime))/1000
-    needTime = needTime*60
-    let nowTime =Number(new Date())/1000
-    if (startTime + needTime > nowTime){
+  setListStatus(s) {
+    if (s == 1) {
       return "未完成"
-    }else{
+    } else {
       return "已到期"
     }
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

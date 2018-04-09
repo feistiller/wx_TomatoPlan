@@ -33,21 +33,6 @@ Page({
       })
     }else{
       let that=this
-    // let tempData={
-    //   name:this.data.name,
-    //   needTime: this.data.needTime,
-    //   startTime: new Date()
-    // }
-    // let allData=[]
-    // let oldData = wx.getStorageSync('plan')
-    // if (oldData){
-    //   allData = JSON.parse(oldData)
-    // }
-    // allData.push(tempData)
-    // wx.setStorage({
-    //   key:"plan",
-    //   data: JSON.stringify(allData),
-    // })
     // 取消本地备份改为上传保存至服务器.
     app.getUserOpenId(function(openId){
       wx.request({

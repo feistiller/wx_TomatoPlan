@@ -53,3 +53,8 @@ page{
     text-align: left;
     font-size: 14px;
 }
+
+.title_text{
+  font-size:10px;
+  color:#ababab
+}

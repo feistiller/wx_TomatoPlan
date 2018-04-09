@@ -11,7 +11,7 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array
      */
-    protected $except = ['wx_api/saveUserData','api/savePlan'
+    protected $except = ['wx_api/saveUserData','api/savePlan','api/showPlans','api/delPlans','wx_api/userFeedback'
         //
     ];
 }

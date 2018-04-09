@@ -1,0 +1,15 @@
+<!--pages/user/feedback.wxml-->
+<view style='padding:10px'>
+  <text class='title_text'>非常感谢您的反馈，bug和新功能一定会非常快改正~让我们一起让这个小程序越来越有趣吧。</text>
+  <form bindsubmit="bindFormSubmit">
+    <view>
+      <textarea name='text' style='background:#fff;width:100%;' placeholder="填写您的意见和建议" />
+    </view>
+    <view style='padding-top:10px'>
+      <input name='email' style='background:#fff;width:100%;' placeholder="如果方便的话，请填写联系方式" />
+    </view>
+    <view style='padding-top:10px'>
+      <button form-type="submit"> 提交 </button>
+    </view>
+  </form>
+</view>

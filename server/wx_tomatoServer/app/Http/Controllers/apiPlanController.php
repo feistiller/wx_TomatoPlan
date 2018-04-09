@@ -25,7 +25,8 @@ class apiPlanController extends BaseController
                 'startTime' => $startTime,
                 'endTime' => $endTime,
                 'eventTitle' => $eventTitle,
-                'status' => 1
+                'status' => 1,
+                'del'=>0
             ];
             if(DB::table('events_status')->insert($save_data)){
                 return $this->dataFormat(0,'增加成功');
@@ -44,11 +45,18 @@ class apiPlanController extends BaseController
         $openId = $request->input('openId');
         $find_array=[
             'openId'=>$openId,
-            'status'=>1
+            'del'=>0
         ];
-        $data=DB::table('events_status')->where($find_array)->find();
+//        这里做一个服务器的筛选，当用户做查询时对于所有的数据进行foreach，更新状态
+        $db=DB::table('events_status');
+        $data=$db->where($find_array)->get();
+        foreach($data as $k=>$v){
+            if($v->endTime<=time()&&$v->status==1){
+                $db->where('id',$v->id)->update(['status'=>2]);
+                $data[$k]->status=2;
+            }
+        }
         return $this->dataFormat(0,'',$data);
-
     }
     /**
      * 删除清空用户的任务(暂时全部删除)
@@ -57,13 +65,8 @@ class apiPlanController extends BaseController
         $openId = $request->input('openId');
         $find_array=[
             'openId'=>$openId,
-            'status'=>1
         ];
-        $data=DB::table('events_status')->where($find_array)->update('status',2);
-        if($data){
-            return $this->dataFormat(0,'',$data);
-        }else{
-            return $this->dataFormat(1,'不知道什么错误');
-        }
+        $data=DB::table('events_status')->where($find_array)->update(['del'=>1]);
+        return $this->dataFormat(0,'清除成功',$data);
     }
 }

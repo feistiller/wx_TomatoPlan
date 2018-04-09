@@ -17,7 +17,12 @@ Route::get('/', function () {
 //用户存储plan
 Route::post('api/savePlan', 'apiPlanController@savePlan');
 //用户显示plan
-Route::post('api/savePlan', 'apiPlanController@savePlan');
+Route::post('api/showPlans', 'apiPlanController@showPlans');
+//用户删除plan
+Route::post('api/delPlans', 'apiPlanController@delPlans');
 //获取小程序的openID
 Route::get('wx_api/saveCode','wxAppController@saveCode');
 Route::post('wx_api/saveUserData','wxAppController@saveUserData');
+
+//反馈收集
+Route::post('wx_api/userFeedback','wxAppController@userFeedback');

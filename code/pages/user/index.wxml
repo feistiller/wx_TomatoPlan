@@ -12,7 +12,8 @@
     <view bindtap='cleanList' style='width:80px;height:80px;background-image: url("{{url}}public/img/btn/empty.png");background-size: cover;'></view>
     </view>
     <view style='padding:10px;'>
-      <text style='font-size:10px;color:#ababab'>此版本只是一个小白码农的开发版本，正在一步步的完善中，如果您在使用的时候发现了任何问题和建议，欢迎发送邮件至uneedzf@outlook.com，[]~(￣▽￣)~*</text>
+      <navigator url="/pages/user/feedback" hover-class="navigator-hover"><text style='font-size:10px;color:#ababab'>[]~(￣▽￣)~*此版本只是一个小白码农的开发版本，正在一步步的完善中，如果您在使用的时候发现了任何问题和建议请点击这里反馈。</text></navigator>
     </view>
+    
   </view>
 </view>

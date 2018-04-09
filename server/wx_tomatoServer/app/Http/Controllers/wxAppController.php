@@ -69,4 +69,21 @@ class wxAppController extends BaseController
         }
 
     }
+    /**
+     * 用户微信的反馈收集
+     */
+    public function userFeedback(Request $request){
+        $openId = $request->input('openId');
+        if($openId){
+            $save_data=[
+                'text'=>$request->input('text'),
+                'email'=>$request->input('email'),
+                'openId'=>$openId
+            ];
+            DB::table('user_feedback')->insert($save_data);
+            return $this->dataFormat(0,'反馈成功');
+        }else{
+            return $this->dataFormat(1,'您的数据错误');
+        }
+    }
 }
