@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view>
+
     <view class='listWord xCenter grayWord'>倒计时</view>
     <view>
       <text class='clockShow xCenter'>{{surplusTimeMin}}:{{surplusTimeSec}}</text>
@@ -21,6 +22,7 @@
         <input bindinput='setTime' class="weui-input" placeholder="请输入任务时长（分钟）" />
       </view>
     </view>
+        <view  class='listWord xCenter' style='font-size:10px;color:#ff7676'>{{notice}}</view>
     <view class='xCenter' style='padding-top:100px'>
       <view style='width:100px;height:100px;background-image: url("{{url}}public/img/btn/start.png");background-size: cover;' bindtap='timeStart'></view>
     </view>

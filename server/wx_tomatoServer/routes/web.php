@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::post('api/savePlan', 'apiPlanController@savePlan');
 //用户显示plan
 Route::post('api/showPlans', 'apiPlanController@showPlans');
+//文字通知
+Route::get('api/notice','apiPlanController@notice');
 //用户删除plan
 Route::post('api/delPlans', 'apiPlanController@delPlans');
 //获取小程序的openID
@@ -26,3 +28,4 @@ Route::post('wx_api/saveUserData','wxAppController@saveUserData');
 
 //反馈收集
 Route::post('wx_api/userFeedback','wxAppController@userFeedback');
+

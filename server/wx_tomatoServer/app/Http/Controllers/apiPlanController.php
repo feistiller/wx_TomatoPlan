@@ -69,4 +69,11 @@ class apiPlanController extends BaseController
         $data=DB::table('events_status')->where($find_array)->update(['del'=>1]);
         return $this->dataFormat(0,'清除成功',$data);
     }
+    /**
+     * notice所有的通知
+     */
+    public function notice(){
+        $data=DB::table('wx_notice')->orderBy('id','desc')->first();
+        return $this->dataFormat(0,'',$data);
+    }
 }

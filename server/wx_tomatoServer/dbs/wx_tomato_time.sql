@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-04-09 18:48:13
+Date: 2018-04-10 18:54:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -66,6 +66,20 @@ CREATE TABLE `user_return_back` (
 
 -- ----------------------------
 -- Records of user_return_back
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `wx_notice`
+-- ----------------------------
+DROP TABLE IF EXISTS `wx_notice`;
+CREATE TABLE `wx_notice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `notice` text,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of wx_notice
 -- ----------------------------
 
 -- ----------------------------

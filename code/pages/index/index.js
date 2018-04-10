@@ -9,9 +9,27 @@ Page({
     surplusTimeSec: '00',
     name: '',
     needTime: '',
-    url: app.globalData.url
+    url: app.globalData.url,
+    notice:''
   },
   onLoad: function () {
+    // 这里只拿通知文字
+    let that=this
+    wx.request({
+      url: app.globalData.url + 'api/notice',
+      success: res1 => {
+        if (res1.data.code === 0) {
+          that.setData({
+            notice:res1.data.data.notice
+          })
+        } else {
+          wx.showLoading({
+            title: res1.data.message,
+            duration: 1000
+          })
+        }
+      }
+    })
   },
   // 设定时间和名称
   setName: function (e) {
